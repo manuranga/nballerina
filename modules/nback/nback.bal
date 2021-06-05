@@ -10,6 +10,7 @@ const OUTPUT_EXTENSION = ".ll";
 
 public function compileModule(bir:Module mod, string basename) returns err:Any|io:Error? {
     string path = basename + OUTPUT_EXTENSION;
+    io:println(path);
     llvm:Output out = check new(path);
     foreach bir:ModuleDefn def in mod.defns {
         if def is bir:FunctionDefn {

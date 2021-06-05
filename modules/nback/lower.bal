@@ -135,6 +135,7 @@ function lowerFunctionSignature(bir:FunctionSignature signature) returns bll:Fun
         paramTypes: paramTypes.cloneReadOnly()
     };
     return ty;
+
 }
 
 function lowerRetType(t:SemType ty) returns bll:RetType|LowerError {

@@ -89,7 +89,9 @@ public type LinkageType "internal"|"external";
 
 # Corresponds to llvm::FunctionType class
 public type FunctionType record {|
+    #xx
     Type returnType;
+    #xxx
     Type[] paramTypes = [];
 |};
 

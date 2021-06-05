@@ -1,0 +1,9 @@
+module (), "0.1.0", "0_nil_function.bal" {
+
+    function nilToNil() returns () {
+        regs:
+            () r0 = ();
+        bb0:
+            return r0;
+    }
+}

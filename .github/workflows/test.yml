@@ -34,16 +34,15 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ~/ballerina-linux-swan-lake-beta2
+            ${{$HOME}}/ballerina-linux-swan-lake-beta2
           key: jbal-slbeta2
       - name: Download and install jBallerina
         if: steps.cache-jbal.outputs.cache-hit != 'true'
         run: |
-          curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > ~/ballerina-linux-swan-lake-beta2.zip
-          unzip "~/ballerina-linux-swan-lake-beta2.zip" -d "$HOME"
-          chmod +x "~/ballerina-linux-swan-lake-beta2/bin/bal"
-          echo "~/ballerina-linux-swan-lake-beta2/bin/" >> $GITHUB_PATH
+          curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > $HOME/ballerina-linux-swan-lake-beta2.zip
+          unzip "$HOME/ballerina-linux-swan-lake-beta2.zip" -d "$HOME"
+          chmod +x "$HOME/ballerina-linux-swan-lake-beta2/bin/bal"
+          echo "$HOME/ballerina-linux-swan-lake-beta2/bin/" >> $GITHUB_PATH
       - name: Test
         run: |
           make test
-

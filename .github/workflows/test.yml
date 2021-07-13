@@ -34,7 +34,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ${{$HOME}}/ballerina-linux-swan-lake-beta2
+            ${{HOME}}/ballerina-linux-swan-lake-beta2
           key: jbal-slbeta2
       - name: Download and install jBallerina
         if: steps.cache-jbal.outputs.cache-hit != 'true'

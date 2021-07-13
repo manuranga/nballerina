@@ -18,12 +18,13 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ./llvm
+            ${{ runner.temp }}/llvm
           key: llvm-11
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
         with:
           version: "11"
+          directory: ${{ runner.temp }}/llvm
           cached: ${{ steps.cache-llvm.outputs.cache-hit }}
       - name: Cache jBallerina
         id: cache-jbal

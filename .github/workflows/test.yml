@@ -31,11 +31,12 @@ jobs:
           cached: ${{ steps.cache-llvm.outputs.cache-hit }}
       - name: Download ballerina
         run: |
-          curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > ballerina-linux-swan-lake-beta2.zip
-          unzip ballerina-linux-swan-lake-beta2.zip
+          curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > $HOME/ballerina-linux-swan-lake-beta2.zip
+          unzip "$HOME/ballerina-linux-swan-lake-beta2.zip" -d "$HOME"
           pwd
           ls
-          echo "$HOME"
+          ls "$HOME"
+          echo "$HOME" 
           echo "$HOME/ballerina-linux-swan-lake-beta2/bin/" >> $GITHUB_PATH
 
 #           curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > x

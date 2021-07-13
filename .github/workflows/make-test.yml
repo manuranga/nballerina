@@ -13,9 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-#       - name: Run a one-line script
-#         run: echo Hello, world!
-      # Runs a set of commands using the runners shell
       - name: Cache LLVM and Clang
         id: cache-llvm
         uses: actions/cache@v2
@@ -34,7 +31,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ${{env.HOME}}/ballerina-linux-swan-lake-beta2
+            ~/ballerina-linux-swan-lake-beta2
           key: jbal-slbeta2
       - name: Download and install jBallerina
         if: steps.cache-jbal.outputs.cache-hit != 'true'

@@ -29,26 +29,20 @@ jobs:
         with:
           version: "11"
           cached: ${{ steps.cache-llvm.outputs.cache-hit }}
-      - name: Download ballerina
+      - name: Cache jBallerina
+        id: cache-jbal
+        uses: actions/cache@v2
+        with:
+          path: |
+            $HOME/ballerina-linux-swan-lake-beta2
+          key: jbal-slbeta2
+      - name: Download and install jBallerina
+        if: steps.cache-jbal.outputs.cache-hit != 'true'
         run: |
           curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > $HOME/ballerina-linux-swan-lake-beta2.zip
           unzip "$HOME/ballerina-linux-swan-lake-beta2.zip" -d "$HOME"
           chmod +x "$HOME/ballerina-linux-swan-lake-beta2/bin/bal"
-          pwd
-          ls
-          ls "$HOME"
-          echo "$HOME" 
           echo "$HOME/ballerina-linux-swan-lake-beta2/bin/" >> $GITHUB_PATH
-
-#           curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > x
-#       - name: Download ballerina
-#         uses: dsaltares/fetch-gh-release-asset@master
-#         with:
-#           repo: "ballerina-platform/ballerina-distribution"
-#           version: "tags/vswan-lake-beta2"
-#           file: "ballerina-linux-swan-lake-beta2.zip"
-#           target: "downloads/ballerina-linux-swan-lake-beta2.zip"
-#           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Test
         run: |
           make test

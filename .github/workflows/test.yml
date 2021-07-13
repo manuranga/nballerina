@@ -33,6 +33,7 @@ jobs:
         run: |
           curl -L https://github.com/ballerina-platform/ballerina-distribution/releases/download/vswan-lake-beta2/ballerina-linux-swan-lake-beta2.zip > $HOME/ballerina-linux-swan-lake-beta2.zip
           unzip "$HOME/ballerina-linux-swan-lake-beta2.zip" -d "$HOME"
+          chmod +x "$HOME/ballerina-linux-swan-lake-beta2/bin/bal"
           pwd
           ls
           ls "$HOME"

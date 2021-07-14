@@ -9,7 +9,7 @@ function foo(int i, int j) returns int {
 }
 
 function getArg1() returns int {
-    return 2;
+    return true;
 }
 
 function getArg2() returns int {
